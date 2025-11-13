@@ -44,10 +44,12 @@ This guide will help you deploy the Siddhartha Group of Schools website to Verce
 
 4. **Configure the Service**
    - **Name**: `siddhartha-school-backend` (or any name you prefer)
-   - **Root Directory**: `siddhartha-school/server`
+   - **Root Directory**: `siddhartha-school/server` ⚠️ **IMPORTANT: Set this correctly!**
    - **Environment**: `Node`
    - **Build Command**: `npm install`
    - **Start Command**: `npm start`
+   
+   **Note**: If you're using `render.yaml`, the root directory is already set. Otherwise, make sure to set it manually in the Render dashboard.
 
 5. **Set Environment Variables**
    Click "Advanced" → "Add Environment Variable" and add:
