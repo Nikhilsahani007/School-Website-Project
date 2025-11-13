@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Build output
+/build
+/dist
+/.parcel-cache
+/.next
+/out
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional: ignore React build inside client
+client/build/
+
+# Optional: ignore Render local dev files
+render.yaml
+
