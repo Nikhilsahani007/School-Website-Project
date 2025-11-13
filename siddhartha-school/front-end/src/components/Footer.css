@@ -1,0 +1,95 @@
+.footer {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 100%);
+	border-top: 3px solid rgba(255, 255, 255, 0.2);
+	margin-top: auto;
+	position: relative;
+	z-index: 1;
+	color: white;
+}
+
+.footer-content {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2rem 20px;
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr 1fr;
+	gap: 1.5rem;
+}
+
+.footer-section h3, .footer-section h4 { 
+	margin-bottom: .5rem; 
+	color: white;
+	font-weight: 600;
+}
+.footer-section p { 
+	color: rgba(255, 255, 255, 0.9); 
+}
+
+.social-links { display: flex; gap: .5rem; margin-top: .5rem; }
+.social-links a { 
+	font-size: 1.5rem; 
+	transition: transform 0.3s ease;
+}
+.social-links a:hover {
+	transform: scale(1.2) translateY(-3px);
+}
+
+.footer-links, .footer-info { list-style: none; padding: 0; margin: 0; }
+.footer-links li, .footer-info li { margin: .35rem 0; }
+.footer-links a { 
+	color: rgba(255, 255, 255, 0.9); 
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+.footer-links a:hover { 
+	color: #fff;
+	transform: translateX(5px);
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.newsletter-form { display: flex; gap: .5rem; margin-top: .5rem; }
+.newsletter-form input { 
+	flex: 1; 
+	padding: .6rem .8rem; 
+	border-radius: 8px; 
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	background: rgba(255, 255, 255, 0.2);
+	color: white;
+}
+.newsletter-form input::placeholder {
+	color: rgba(255, 255, 255, 0.7);
+}
+.newsletter-form button { 
+	padding: .6rem 1rem; 
+	border-radius: 8px; 
+	background: rgba(255, 255, 255, 0.9);
+	color: var(--primary-color);
+	border: none;
+	font-weight: 600;
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+.newsletter-form button:hover {
+	background: white;
+	transform: scale(1.05);
+}
+
+.footer-bottom {
+	border-top: 2px solid rgba(255, 255, 255, 0.2);
+	text-align: center;
+	padding: .9rem 20px;
+	color: rgba(255, 255, 255, 0.9);
+	background: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+	.footer-content { grid-template-columns: 1.5fr 1fr 1fr; }
+}
+@media (max-width: 768px) {
+	.footer-content { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+	.footer-content { grid-template-columns: 1fr; }
+	.newsletter-form { flex-direction: column; }
+}
+
