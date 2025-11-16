@@ -102,52 +102,52 @@ const createTransporter = () => {
   });
 };
 
-// Email sending function
 const sendEmail = async (subject, htmlContent, recipientEmail = null) => {
   try {
     const emailUser = process.env.EMAIL_USER || 'sara252703@gmail.com';
     const emailPass = process.env.EMAIL_PASS || process.env.EMAIL_APP_PASSWORD;
-    // Use environment variable for recipient email, fallback to default
+
     const recipient = recipientEmail || process.env.EMAIL_RECIPIENT || 'sara252703@gmail.com';
-    
-    // Check if email credentials are configured
+
     if (!emailPass) {
       console.error('❌ Email not sent: EMAIL_PASS or EMAIL_APP_PASSWORD not configured in .env file');
       return { success: false, error: 'Email credentials not configured' };
     }
-    
+
     console.log('📧 Attempting to send email...');
     console.log('   From:', emailUser);
     console.log('   To:', recipient);
     console.log('   Subject:', subject);
-    
-    const transporter = createTransporter();
-    
-    // Verify connection first
-    await transporter.verify();
-    console.log('✅ SMTP server connection verified');
-    
+
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: emailUser,
+        pass: emailPass
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
+    });
+
     const mailOptions = {
       from: emailUser,
       to: recipient,
-      subject: subject,
+      subject,
       html: htmlContent
     };
 
     const info = await transporter.sendMail(mailOptions);
+
     console.log('✅ Email sent successfully!');
     console.log('   Message ID:', info.messageId);
-    console.log('   Response:', info.response);
+
     return { success: true, messageId: info.messageId };
+
   } catch (error) {
     console.error('❌ Email sending error:', error.message);
-    if (error.code === 'EAUTH') {
-      console.error('   Authentication failed. Check your email and app password.');
-    } else if (error.code === 'ECONNECTION') {
-      console.error('   Connection failed. Check your internet connection.');
-    } else {
-      console.error('   Full error:', error);
-    }
     return { success: false, error: error.message };
   }
 };
