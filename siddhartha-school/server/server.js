@@ -94,10 +94,16 @@ const createTransporter = () => {
   
   // Gmail SMTP configuration
   return nodemailer.createTransport({
-    service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user: emailUser,
       pass: emailPass
+    },
+    tls: {
+      minVersion: "TLSv1.2",
+      rejectUnauthorized: false
     }
   });
 };
