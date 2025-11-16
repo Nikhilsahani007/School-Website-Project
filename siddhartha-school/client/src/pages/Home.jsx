@@ -202,7 +202,7 @@ function Home() {
 						<div className="management-card">
 							<div className="management-photo">
 								<img 
-									src="/assets/chairman.jpg" 
+									src="/assets/Chairman.jpg" 
 									alt="Chairman"
 									onError={(e) => {
 										//e.target.src = 'https://via.placeholder.com/500x800?text=Chairman';
