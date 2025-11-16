@@ -6,7 +6,7 @@ const getApiUrl = () => {
   if (import.meta.env.PROD) {
     // Use VITE_API_URL if set, otherwise use the default Render backend URL
     // IMPORTANT: Update this URL to match your actual Render backend URL after deployment
-    return import.meta.env.VITE_API_URL || 'https://siddhartha-school-backend.onrender.com';
+    return import.meta.env.VITE_API_URL || 'https://siddhartha-group-of-schools.onrender.com';
   }
   // In development, use localhost
   return 'http://localhost:5000';

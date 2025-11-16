@@ -113,7 +113,7 @@ function Contact() {
 						
 						<div className="info-item">
 							<h3>🕐 Office Hours</h3>
-							<p>Monday - Friday: 08:15 AM - 05:30 PM<br />Saturday: 8:00 AM - 12:00 PM</p>
+							<p>Monday - Friday: 8:15 AM - 05:30 PM<br />Saturday: 8:00 AM - 12:00 PM</p>
 						</div>
 					</div>
 
