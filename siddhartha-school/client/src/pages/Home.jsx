@@ -202,7 +202,7 @@ function Home() {
 						<div className="management-card">
 							<div className="management-photo">
 								<img 
-									src="/src/assets/chairman.jpg" 
+									src="/public/assets/chairman.jpg" 
 									alt="Chairman"
 									onError={(e) => {
 										//e.target.src = 'https://via.placeholder.com/500x800?text=Chairman';
@@ -223,7 +223,7 @@ function Home() {
 						<div className="management-card">
 							<div className="management-photo">
 								<img 
-									src="/src/assets/Vice Chairperson.jpg"
+									src="/public/assets/Vice Chairperson.jpg"
 									onError={(e) => {
 										//e.target.src = 'https://via.placeholder.com/300x300?text=Vice-Chairman';
 									}}
@@ -243,7 +243,7 @@ function Home() {
 						<div className="management-card">
 							<div className="management-photo">
 								<img 
-									src="/src/assets/Director.jpg" 
+									src="/public/assets/Director.jpg" 
 									alt="Director"
 									onError={(e) => {
 										//e.target.src = 'https://via.placeholder.com/300x300?text=Director';
