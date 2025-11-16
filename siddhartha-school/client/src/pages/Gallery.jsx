@@ -2,15 +2,15 @@ import { useState } from 'react';
 import './Gallery.css';
 
 const IMAGES = [
-	'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop',
-	'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1600&auto=format&fit=crop',
-	'https://images.unsplash.com/photo-1596495577886-d920f1fb7238?q=80&w=1600&auto=format&fit=crop',
-	'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1600&auto=format&fit=crop',
-	'https://images.unsplash.com/photo-1523246198646-18f4a9b1d5a0?q=80&w=1600&auto=format&fit=crop',
-	'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1600&auto=format&fit=crop',
-	'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1600&auto=format&fit=crop',
-	'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?q=80&w=1600&auto=format&fit=crop',
-	'https://images.unsplash.com/photo-1510070009289-b5bc34383727?q=80&w=1600&auto=format&fit=crop'
+	'https://chinmayavvdelhi.ac.in/assets/images/gallery/school-gallery-2.jpg',
+	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvk63vCTIAV-dmp_qjqZK9HUdAci97Gcl7VQ&s',
+	'https://t3.ftcdn.net/jpg/09/28/53/10/360_F_928531048_45ay4GSNYJuTLIHKtuR255O9ndjsHg5x.jpg',
+	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeKC5bqjgErl1JppNfOOLNoUUILJzWODgQJA&s',
+	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2__7zEoLJA5hS27VX5pUSdd_1iqYzRRUwQr4R9xsMyAxHUrF60VNGh-OoDao5_Uvz1U8&usqp=CAU',
+	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReNrSLSDdoihlSjag61LsQJjdx02q2JwH3-forbDCy3x9tI4MJfYnj_g9CBX7dhEvLqNY&usqp=CAU',
+	'https://ai.thestempedia.com/wp-content/uploads/2024/12/Sindhi-High-School-5-scaled.jpg',
+	'https://indiastemfoundation.org/wp-content/uploads/2024/08/6-17.png',
+	'https://npssjpr.com/wp-content/uploads/2024/02/5-essential-skills-student-need-for-their-future.png'
 ];
 
 function Gallery() {

@@ -44,8 +44,13 @@ mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB Connected Successfully'))
-.catch((err) => console.error('MongoDB Connection Error:', err));
+.then(() => console.log('✅ MongoDB Connected Successfully'))
+.catch((err) => {
+  console.error('❌ MongoDB Connection Error:', err);
+  console.error('⚠️  Server will continue running, but database operations will fail.');
+  // Note: Server continues to run even if MongoDB fails
+  // This allows the API to respond with error messages rather than crashing
+});
 
 // Mongoose Schemas
 const ContactSchema = new mongoose.Schema({
@@ -111,10 +116,12 @@ const createTransporter = () => {
 };
 
 // Email sending function
-const sendEmail = async (subject, htmlContent, recipientEmail = 'sara252703@gmail.com') => {
+const sendEmail = async (subject, htmlContent, recipientEmail = null) => {
   try {
     const emailUser = process.env.EMAIL_USER || 'sara252703@gmail.com';
     const emailPass = process.env.EMAIL_PASS || process.env.EMAIL_APP_PASSWORD;
+    // Use environment variable for recipient email, fallback to default
+    const recipient = recipientEmail || process.env.EMAIL_RECIPIENT || 'sara252703@gmail.com';
     
     // Check if email credentials are configured
     if (!emailPass) {
@@ -124,7 +131,7 @@ const sendEmail = async (subject, htmlContent, recipientEmail = 'sara252703@gmai
     
     console.log('📧 Attempting to send email...');
     console.log('   From:', emailUser);
-    console.log('   To:', recipientEmail);
+    console.log('   To:', recipient);
     console.log('   Subject:', subject);
     
     const transporter = createTransporter();
@@ -135,7 +142,7 @@ const sendEmail = async (subject, htmlContent, recipientEmail = 'sara252703@gmai
     
     const mailOptions = {
       from: emailUser,
-      to: recipientEmail,
+      to: recipient,
       subject: subject,
       html: htmlContent
     };
@@ -233,7 +240,7 @@ app.post('/api/contact', async (req, res) => {
     `;
 
     // Send email notification
-    const emailResult = await sendEmail(emailSubject, emailHtml, 'sara252703@gmail.com');
+    const emailResult = await sendEmail(emailSubject, emailHtml);
     if (!emailResult.success) {
       console.error('⚠️  Failed to send contact form email:', emailResult.error);
       // Don't fail the request if email fails - form submission still succeeds
@@ -340,7 +347,7 @@ app.post('/api/admissions', async (req, res) => {
     `;
 
     // Send email notification
-    const emailResult = await sendEmail(emailSubject, emailHtml, 'sara252703@gmail.com');
+    const emailResult = await sendEmail(emailSubject, emailHtml);
     if (!emailResult.success) {
       console.error('⚠️  Failed to send admission form email:', emailResult.error);
       // Don't fail the request if email fails - form submission still succeeds
@@ -367,10 +374,12 @@ app.get('/api/fees', async (req, res) => {
         { class: 'Nursery - UKG', tuitionFee: 25000, transportFee: 12000, otherFees: 5000, total: 42000 },
         { class: 'Class I - V', tuitionFee: 35000, transportFee: 15000, otherFees: 8000, total: 58000 },
         { class: 'Class VI - VIII', tuitionFee: 45000, transportFee: 15000, otherFees: 10000, total: 70000 },
-        { class: 'Class IX - X', tuitionFee: 55000, transportFee: 18000, otherFees: 12000, total: 85000 },
-        { class: 'Class XI - XII', tuitionFee: 65000, transportFee: 18000, otherFees: 15000, total: 98000 }
+        { class: 'Class IX - X', tuitionFee: 55000, transportFee: 18000, otherFees: 12000, total: 85000 }
       ];
     }
+    
+    // Filter out Class XI - XII entries (school only goes up to 10th standard)
+    fees = fees.filter(fee => !fee.class.includes('XI') && !fee.class.includes('XII'));
     
     res.status(200).json(fees);
   } catch (error) {
@@ -425,7 +434,9 @@ app.get('/api/notices', async (req, res) => {
   }
 });
 
-// Create Notice (Admin only - add authentication in production)
+// Create Notice
+// SECURITY NOTE: This endpoint currently has no authentication.
+// In production, add authentication middleware (e.g., JWT, API key) to protect this endpoint.
 app.post('/api/notices', async (req, res) => {
   try {
     const { title, content, priority } = req.body;
@@ -445,6 +456,23 @@ app.post('/api/notices', async (req, res) => {
     console.error('Notice creation error:', error);
     res.status(500).json({ message: 'Error creating notice' });
   }
+});
+
+// Root route
+app.get('/', (req, res) => {
+  res.status(200).json({ 
+    message: 'Siddhartha Group of Schools API',
+    status: 'Server is running',
+    endpoints: {
+      health: '/api/health',
+      contact: 'POST /api/contact',
+      admissions: 'POST /api/admissions',
+      fees: 'GET /api/fees',
+      notices: 'GET /api/notices',
+      testEmail: 'POST /api/test-email'
+    },
+    timestamp: new Date()
+  });
 });
 
 // Health check
@@ -482,7 +510,7 @@ app.post('/api/test-email', async (req, res) => {
       </html>
     `;
 
-    const result = await sendEmail(emailSubject, emailHtml, 'sara252703@gmail.com');
+    const result = await sendEmail(emailSubject, emailHtml);
     
     if (result.success) {
       res.status(200).json({ 

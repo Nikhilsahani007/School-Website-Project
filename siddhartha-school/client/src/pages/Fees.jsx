@@ -52,7 +52,7 @@ function Fees() {
     <div className="fees">
       <div className="container">
         <h1 className="page-title">Fee Structure</h1>
-        <p className="page-subtitle">Academic Year 2024-2025</p>
+        <p className="page-subtitle">Academic Year 2025-2026</p>
 
         <div className="fees-table-container">
           <table className="fees-table">

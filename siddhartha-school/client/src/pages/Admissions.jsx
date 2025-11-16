@@ -77,8 +77,8 @@ function Admissions() {
 
 				<div className="admissions-banner">
 					<div className="admissions-banner-content">
-						<h2>🎉 Admissions Open for Academic Year 2024-25! 🎉</h2>
-						<p>We are now accepting applications for all classes from Nursery to Class XII. Limited seats available - Apply now!</p>
+						<h2>🎉 Admissions Open for Academic Year 2025-26! 🎉</h2>
+						<p>We are now accepting applications for all classes from Nursery to Class X. Limited seats available - Apply now!</p>
 						<div className="admissions-highlights">
 							<span>✓ Early Bird Discount Available</span>
 							<span>✓ Scholarships for Meritorious Students</span>
@@ -88,17 +88,24 @@ function Admissions() {
 				</div>
 
 				<div className="admissions-grid">
-					<div className="admissions-info">
-						<h2>Join Siddhartha Group of Schools</h2>
-						<p>We welcome students who are eager to learn and grow. Our admissions team will contact you after reviewing your inquiry.</p>
-						<ul className="admissions-points">
-							<li>Age-appropriate placement across all grades</li>
-							<li>Scholarships and sibling discounts available</li>
-							<li>Campus tours on prior appointment</li>
-							<li>Transport facility available for all branches</li>
-							<li>Choose from any of our three branches</li>
-						</ul>
-					</div>
+	<div className="admissions-info">
+		<h2>Join Siddhartha Group of Schools</h2>
+		<p>We welcome students who are eager to learn and grow. Our admissions team will contact you after reviewing your inquiry.</p>
+
+		<ul className="admissions-points">
+			<li>Age-appropriate placement across all grades</li>
+			<li>Scholarships and sibling discounts available</li>
+			<li>Campus tours on prior appointment</li>
+			<li>Transport facility available for all branches</li>
+			<li>Choose from any of our three branches</li>
+
+			{/* New additions */}
+			<li>Now introducing Robotics Program for hands-on innovation</li>
+			<li>Skill Development Program to build communication, aptitude, and future-ready skills</li>
+		</ul>
+	
+</div>
+
 
 					<form className="admissions-form" onSubmit={handleSubmit}>
 						<div className="form-row">

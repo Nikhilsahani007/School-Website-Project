@@ -5,17 +5,17 @@ import './Home.css';
 const SLIDER_IMAGES = [
 	{
 		id: 1,
-		url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1600&auto=format&fit=crop',
+		url: 'https://content.jdmagicbox.com/comp/medak/s1/9999p8452.8452.171002002641.j2s1/catalogue/siddarth-model-high-school-auto-nagar-medak-secondary-schools-wg6z82d67r.jpg',
 		alt: 'School building exterior'
 	},
 	{
 		id: 2,
-		url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop',
+		url: 'https://scontent.fhyd14-2.fna.fbcdn.net/v/t1.6435-9/89904906_3009591912413722_4096497591691247616_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=jODgsOtEOsMQ7kNvwGK1sCb&_nc_oc=AdkFIOwoaU7vQHoYA5ngIgV0S4qO-R_eoLMIHkBnUqewKc6mGMBNWLzngG3dFpvEHxc&_nc_zt=23&_nc_ht=scontent.fhyd14-2.fna&_nc_gid=N7Z4c7szvK2od2Rz5S2BDw&oh=00_AfitAslSRF0BR_486YnXIYYuVqCqQ2WEWRO74-ucp0yOpA&oe=69414B9F',
 		alt: 'Students in classroom'
 	},
 	{
 		id: 3,
-		url: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1600&auto=format&fit=crop',
+		url: 'https://indiater.com/wp-content/uploads/2019/02/free-education-website-slider-banner-psd-template.jpg',
 		alt: 'School library'
 	},
 	{
@@ -157,7 +157,7 @@ function Home() {
 					</div>
 					<div className="hero-stats">
 						<div className="stat">
-							<div className="stat-value">25+</div>
+							<div className="stat-value">40+</div>
 							<div className="stat-label">Years of Excellence</div>
 						</div>
 						<div className="stat">
@@ -181,8 +181,8 @@ function Home() {
 				<div className="container">
 					<h2 className="section-title">Our Story</h2>
 					<p>
-						Established in 1999, Siddhartha Group of Schools has been a beacon of excellence in education 
-						for over 25 years. We are committed to nurturing young minds and shaping future leaders 
+						Established in 1984, Siddhartha Group of Schools has been a beacon of excellence in education 
+						for over 41 years. We are committed to nurturing young minds and shaping future leaders 
 						through quality education, holistic development, and strong values.
 					</p>
 					<p>
@@ -202,18 +202,18 @@ function Home() {
 						<div className="management-card">
 							<div className="management-photo">
 								<img 
-									src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" 
+									src="/src/assets/chairman.jpg" 
 									alt="Chairman"
 									onError={(e) => {
-										e.target.src = 'https://via.placeholder.com/300x300?text=Chairman';
+										//e.target.src = 'https://via.placeholder.com/500x800?text=Chairman';
 									}}
 								/>
 							</div>
 							<div className="management-info">
 								<h3>Chairman</h3>
-								<p className="management-name">Mr. Rajesh Kumar</p>
+								<p className="management-name">Mr. K. Indra Reddy</p>
 								<p className="management-desc">
-									With over 30 years of experience in education, our Chairman has been instrumental in 
+									With over 45 years of experience in education, our Chairman has been instrumental in 
 									establishing Siddhartha Group of Schools as a beacon of excellence. His vision focuses on 
 									holistic development and creating leaders of tomorrow across all our branches.
 								</p>
@@ -223,19 +223,18 @@ function Home() {
 						<div className="management-card">
 							<div className="management-photo">
 								<img 
-									src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" 
-									alt="Vice-Chairman"
+									src="/src/assets/Vice Chairperson.jpg"
 									onError={(e) => {
-										e.target.src = 'https://via.placeholder.com/300x300?text=Vice-Chairman';
+										//e.target.src = 'https://via.placeholder.com/300x300?text=Vice-Chairman';
 									}}
 								/>
 							</div>
 							<div className="management-info">
-								<h3>Vice-Chairman</h3>
-								<p className="management-name">Mr. Vikram Singh</p>
+								<h3>Vice-Chairperson</h3>
+								<p className="management-name">Mr. K. Naga Laxmi</p>
 								<p className="management-desc">
-									Our Vice-Chairman brings extensive administrative experience and strategic leadership to 
-									the group. He plays a key role in expanding our educational network and ensuring consistent 
+									Our Vice-Chairperson brings extensive administrative experience and strategic leadership to 
+									the group. She plays a key role in expanding our educational network and ensuring consistent 
 									quality across all branches while fostering innovation in teaching and learning.
 								</p>
 							</div>
@@ -244,19 +243,19 @@ function Home() {
 						<div className="management-card">
 							<div className="management-photo">
 								<img 
-									src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" 
+									src="/src/assets/Director.jpg" 
 									alt="Director"
 									onError={(e) => {
-										e.target.src = 'https://via.placeholder.com/300x300?text=Director';
+										//e.target.src = 'https://via.placeholder.com/300x300?text=Director';
 									}}
 								/>
 							</div>
 							<div className="management-info">
 								<h3>Director</h3>
-								<p className="management-name">Dr. Priya Sharma</p>
+								<p className="management-name">Mr. S. Nagarjuna Reddy</p>
 								<p className="management-desc">
 									Our Director brings a wealth of academic expertise and innovative teaching methodologies 
-									to the schools. With a Ph.D. in Education and years of experience, she ensures our 
+									to the schools. With a Ph.D. in Education and years of experience, he ensures our 
 									curriculum meets international standards while maintaining cultural values across all branches.
 								</p>
 							</div>
@@ -298,8 +297,9 @@ function Home() {
 					<div className="branches-grid">
 						<div className="branch-card">
 							<div className="branch-icon">🏫</div>
-							<h3>Main Branch</h3>
-							<p className="branch-location">📍 City Center</p>
+							<h3>Siddhartha High School</h3>
+							<p className="branch-location">Vanasthalipuram, Hyderabad </p>
+							<p className="branch-location">(Near Ganesh Temple)</p>
 							<p className="branch-desc">
 								Our flagship branch located in the heart of the city, offering comprehensive education 
 								from Nursery to Class XII with state-of-the-art facilities and experienced faculty.
@@ -312,8 +312,8 @@ function Home() {
 						</div>
 						<div className="branch-card">
 							<div className="branch-icon">🏛️</div>
-							<h3>North Branch</h3>
-							<p className="branch-location">📍 North District</p>
+							<h3>Siddhartha Model High School</h3>
+							<p className="branch-location">Kamala nagar, Vanasthalipuram, Hyderabad</p>
 							<p className="branch-desc">
 								Our North Branch serves the growing community in the northern region, providing the same 
 								quality education and facilities as our main branch with a focus on local community needs.
@@ -326,8 +326,8 @@ function Home() {
 						</div>
 						<div className="branch-card">
 							<div className="branch-icon">🏢</div>
-							<h3>South Branch</h3>
-							<p className="branch-location">📍 South District</p>
+							<h3>Siddhartha Grammar High School</h3>
+							<p className="branch-location">Vaidehi Nagar, Vanasthalipuram, Hyderabad</p>
 							<p className="branch-desc">
 								Our newest branch in the southern district, equipped with modern facilities and innovative 
 								teaching methods, continuing our tradition of academic excellence and holistic development.
@@ -336,6 +336,81 @@ function Home() {
 								<span>✓ Full Infrastructure</span>
 								<span>✓ Transport Available</span>
 								<span>✓ Modern Labs</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Facilities */}
+			<section className="facilities-section">
+				<div className="container">
+					<h2 className="section-title">Our Facilities</h2>
+					<div className="facilities-list">
+						<div className="facility-item">
+							<span className="facility-icon">🏫</span>
+							<div>
+								<h3>Modern Classrooms</h3>
+								<p>Smart boards and audio-visual learning equipment</p>
+							</div>
+						</div>
+						<div className="facility-item">
+							<span className="facility-icon">🔬</span>
+							<div>
+								<h3>Science Laboratories</h3>
+								<p>Well-equipped physics, chemistry, and biology labs</p>
+							</div>
+						</div>
+						<div className="facility-item">
+							<span className="facility-icon">💻</span>
+							<div>
+								<h3>Computer Labs</h3>
+								<p>Latest computers with high-speed internet</p>
+							</div>
+						</div>
+						<div className="facility-item">
+							<span className="facility-icon">📚</span>
+							<div>
+								<h3>Library</h3>
+								<p>Extensive collection of books and digital resources</p>
+							</div>
+						</div>
+						<div className="facility-item">
+							<span className="facility-icon">⚽</span>
+							<div>
+								<h3>Sports Complex</h3>
+								<p>Playground, courts, and indoor sports facilities</p>
+							</div>
+						</div>
+						<div className="facility-item">
+							<span className="facility-icon">🎨</span>
+							<div>
+								<h3>Activity Rooms</h3>
+								<p>Music, art, and dance studios</p>
+							</div>
+						</div>
+						{/* Added Skill Development Program */}
+			<div className="facility-item">
+				<span className="facility-icon">📈</span>
+				<div>
+					<h3>Skill Development Program</h3>
+					<p>Training in communication, aptitude, coding basics, and essential life skills</p>
+				</div>
+			</div>
+
+			{/* Added Robotics Facility */}
+			<div className="facility-item">
+				<span className="facility-icon">🤖</span>
+				<div>
+					<h3>Robotics Lab</h3>
+					<p>Hands-on robotics training with kits, sensors, and programmable microcontrollers</p>
+				</div>
+			</div>
+						<div className="facility-item">
+							<span className="facility-icon">🚌</span>
+							<div>
+								<h3>Transport Facility</h3>
+								<p>Safe and reliable school bus service covering all routes with GPS tracking and trained drivers</p>
 							</div>
 						</div>
 					</div>
@@ -404,63 +479,7 @@ function Home() {
 				</div>
 			</section>
 
-			{/* Facilities */}
-			<section className="facilities-section">
-				<div className="container">
-					<h2 className="section-title">Our Facilities</h2>
-					<div className="facilities-list">
-						<div className="facility-item">
-							<span className="facility-icon">🏫</span>
-							<div>
-								<h3>Modern Classrooms</h3>
-								<p>Smart boards and audio-visual learning equipment</p>
-							</div>
-						</div>
-						<div className="facility-item">
-							<span className="facility-icon">🔬</span>
-							<div>
-								<h3>Science Laboratories</h3>
-								<p>Well-equipped physics, chemistry, and biology labs</p>
-							</div>
-						</div>
-						<div className="facility-item">
-							<span className="facility-icon">💻</span>
-							<div>
-								<h3>Computer Labs</h3>
-								<p>Latest computers with high-speed internet</p>
-							</div>
-						</div>
-						<div className="facility-item">
-							<span className="facility-icon">📚</span>
-							<div>
-								<h3>Library</h3>
-								<p>Extensive collection of books and digital resources</p>
-							</div>
-						</div>
-						<div className="facility-item">
-							<span className="facility-icon">⚽</span>
-							<div>
-								<h3>Sports Complex</h3>
-								<p>Playground, courts, and indoor sports facilities</p>
-							</div>
-						</div>
-						<div className="facility-item">
-							<span className="facility-icon">🎨</span>
-							<div>
-								<h3>Activity Rooms</h3>
-								<p>Music, art, and dance studios</p>
-							</div>
-						</div>
-						<div className="facility-item">
-							<span className="facility-icon">🚌</span>
-							<div>
-								<h3>Transport Facility</h3>
-								<p>Safe and reliable school bus service covering all routes with GPS tracking and trained drivers</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+			
 
 			{/* Latest Notices */}
 			<section className="notices">

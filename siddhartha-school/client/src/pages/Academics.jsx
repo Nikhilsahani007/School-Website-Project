@@ -26,17 +26,18 @@ function Academics() {
 			icon: '🎓',
 			items: ['Science/Math Focus', 'Languages', 'Social Science', 'Career Guidance']
 		},
+		
 		{
-			title: 'Senior Secondary (XI - XII)',
-			desc: 'Streams with advanced preparation.',
-			icon: '🏆',
-			items: ['Science / Commerce / Arts', 'Competitive Prep', 'Projects & Seminars', 'Internships']
+			title: 'Competitive & Skill Development Program',
+			desc: 'Coaching for competitive exams along with essential skill-building modules.',
+			icon: '🎯',
+			items: ['JEE (Main & Advanced)', 'EAMCET Preparation', 'Aptitude & Reasoning Skills', 'Mock Tests & Practice']
 		},
 		{
-			title: 'Competitive Exam Preparation',
-			desc: 'Specialized coaching for JEE, EAMCET, and other competitive exams.',
-			icon: '🎯',
-			items: ['JEE (Main & Advanced)', 'EAMCET Preparation', 'Expert Faculty', 'Mock Tests & Practice']
+			title: 'Robotics Program',
+			desc: 'Hands-on training that builds problem-solving and engineering skills.',
+			icon: '🤖',
+			items: ['Robotics Basics', 'Electronics & Sensors', 'Arduino / Microcontrollers', 'Robot Building & Projects']
 		}
 	];
 

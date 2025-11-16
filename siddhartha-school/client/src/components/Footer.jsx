@@ -9,8 +9,8 @@ function Footer() {
       <div className="footer-content">
         <div className="footer-section">
           <h3>Siddhartha Group of Schools</h3>
-          <p>Excellence in Education Since 1999</p>
-          <p style={{marginTop: '0.5rem', fontSize: '0.9rem'}}>Three Branches | Main | North | South</p>
+          <p>Excellence in Education Since 1984</p>
+          <p style={{marginTop: '0.5rem', fontSize: '0.9rem'}}>Vanasthalipuram, Hyderabad</p>
           <div className="social-links">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <span>📘</span>
@@ -44,7 +44,7 @@ function Footer() {
             <li>📍 Vanasthalipuram, Hyderabad</li>
             <li>📞 +91 70000 80000</li>
             <li>📧 info@siddharthaschool.edu</li>
-            <li>🕐 Mon-Fri: 8:00 AM - 4:00 PM</li>
+            <li>🕐 Mon-Fri: 08:15 AM - 05:30 PM</li>
           </ul>
         </div>
 
@@ -60,7 +60,7 @@ function Footer() {
 
       <div className="footer-bottom">
         <p>&copy; {currentYear} Siddhartha Group of Schools. All rights reserved.</p>
-        <p>Developed with ❤️ using MERN Stack</p>
+        <p>Developed with ❤️ by V.N.K Solutions</p>
       </div>
     </footer>
   );
