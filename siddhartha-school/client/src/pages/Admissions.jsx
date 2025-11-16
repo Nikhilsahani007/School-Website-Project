@@ -1,28 +1,31 @@
-import { useState, useMemo } from 'react';
-import API_BASE_URL from '../config/api';
-import './Admissions.css';
+import { useState, useMemo } from "react";
+import emailjs from "@emailjs/browser";
+import "./Admissions.css";
 
 function Admissions() {
 	const [formData, setFormData] = useState({
-		studentName: '',
-		parentName: '',
-		email: '',
-		phone: '',
-		class: '',
-		previousSchool: '',
-		address: ''
+		studentName: "",
+		parentName: "",
+		email: "",
+		phone: "",
+		class: "",
+		previousSchool: "",
+		address: "",
 	});
-	const [status, setStatus] = useState({ type: '', message: '' });
+
+	const [status, setStatus] = useState({ type: "", message: "" });
 	const [loading, setLoading] = useState(false);
 
 	const formatPhone = (value) => {
-		const digits = value.replace(/\D/g, '').slice(0, 10);
+		const digits = value.replace(/\D/g, "").slice(0, 10);
 		if (digits.length <= 5) return digits;
 		return `${digits.slice(0, 5)} ${digits.slice(5)}`;
 	};
-	const normalizePhone = (value) => value.replace(/\D/g, '').slice(0, 10);
+
+	const normalizePhone = (value) => value.replace(/\D/g, "").slice(0, 10);
 	const isValidPhone = (value) => normalizePhone(value).length === 10;
-	const isValidEmail = (value) => /^(?:[a-zA-Z0-9_'^&\+\-])+(?:\.(?:[a-zA-Z0-9_'^&\+\-])+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(value);
+	const isValidEmail = (value) =>
+		/^(?:[a-zA-Z0-9_'^&+\-])+(?:\.(?:[a-zA-Z0-9_'^&+\-])+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(value);
 
 	const formValid = useMemo(() => {
 		return (
@@ -30,43 +33,75 @@ function Admissions() {
 			formData.parentName.trim().length > 1 &&
 			isValidEmail(formData.email) &&
 			isValidPhone(formData.phone) &&
-			formData.class !== ''
+			formData.class !== ""
 		);
 	}, [formData]);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		if (name === 'phone') {
+		if (name === "phone") {
 			setFormData({ ...formData, phone: formatPhone(value) });
 			return;
 		}
 		setFormData({ ...formData, [name]: value });
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		if (!formValid) {
-			setStatus({ type: 'error', message: 'Please fill all required fields correctly.' });
+			setStatus({ type: "error", message: "Please fill all required fields correctly." });
 			return;
 		}
+
 		setLoading(true);
-		setStatus({ type: '', message: '' });
-		try {
-			const payload = { ...formData, phone: normalizePhone(formData.phone) };
-			const res = await fetch(`${API_BASE_URL}/api/admissions`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(payload)
-			});
-			const data = await res.json();
-			if (!res.ok) throw new Error(data.message || 'Submission failed');
-			setStatus({ type: 'success', message: 'Admission inquiry submitted successfully.' });
-			setFormData({ studentName: '', parentName: '', email: '', phone: '', class: '', previousSchool: '', address: '' });
-		} catch (err) {
-			setStatus({ type: 'error', message: err.message || 'Something went wrong.' });
-		} finally {
-			setLoading(false);
-		}
+		setStatus({ type: "", message: "" });
+
+		const templateParams = {
+			studentName: formData.studentName,
+			parentName: formData.parentName,
+			email: formData.email,
+			phone: normalizePhone(formData.phone),
+			class: formData.class,
+			previousSchool: formData.previousSchool || "N/A",
+			address: formData.address || "N/A",
+		};
+
+		emailjs
+			.send(
+				"service_ejxlk64",      // Your Service ID
+				"template_pbgbrsv",     // Admission Template ID
+				templateParams,
+				"u2jNvokJMsi6k2f7B"     // Public Key
+			)
+			.then(
+				() => {
+					setStatus({
+						type: "success",
+						message: "Admission inquiry submitted successfully.",
+					});
+
+					setFormData({
+						studentName: "",
+						parentName: "",
+						email: "",
+						phone: "",
+						class: "",
+						previousSchool: "",
+						address: "",
+					});
+
+					setLoading(false);
+				},
+				(error) => {
+					console.error("EmailJS Error:", error);
+					setStatus({
+						type: "error",
+						message: "Submission failed. Please try again later.",
+					});
+					setLoading(false);
+				}
+			);
 	};
 
 	return (
@@ -88,54 +123,90 @@ function Admissions() {
 				</div>
 
 				<div className="admissions-grid">
-	<div className="admissions-info">
-		<h2>Join Siddhartha Group of Schools</h2>
-		<p>We welcome students who are eager to learn and grow. Our admissions team will contact you after reviewing your inquiry.</p>
 
-		<ul className="admissions-points">
-			<li>Age-appropriate placement across all grades</li>
-			<li>Scholarships and sibling discounts available</li>
-			<li>Campus tours on prior appointment</li>
-			<li>Transport facility available for all branches</li>
-			<li>Choose from any of our three branches</li>
+					<div className="admissions-info">
+						<h2>Join Siddhartha Group of Schools</h2>
+						<p>We welcome students who are eager to learn and grow. Our admissions team will contact you after reviewing your inquiry.</p>
 
-			{/* New additions */}
-			<li>Now introducing Robotics Program for hands-on innovation</li>
-			<li>Skill Development Program to build communication, aptitude, and future-ready skills</li>
-		</ul>
-	
-</div>
-
+						<ul className="admissions-points">
+							<li>Age-appropriate placement across all grades</li>
+							<li>Scholarships and sibling discounts available</li>
+							<li>Campus tours on prior appointment</li>
+							<li>Transport facility available for all branches</li>
+							<li>Choose from any of our three branches</li>
+							<li>Now introducing Robotics Program for hands-on innovation</li>
+							<li>Skill Development Program to build communication, aptitude, and future-ready skills</li>
+						</ul>
+					</div>
 
 					<form className="admissions-form" onSubmit={handleSubmit}>
 						<div className="form-row">
 							<div className="form-group">
 								<label htmlFor="studentName">Student Name</label>
-								<input id="studentName" name="studentName" value={formData.studentName} onChange={handleChange} required />
+								<input
+									id="studentName"
+									name="studentName"
+									value={formData.studentName}
+									onChange={handleChange}
+									required
+								/>
 							</div>
+
 							<div className="form-group">
 								<label htmlFor="parentName">Parent/Guardian Name</label>
-								<input id="parentName" name="parentName" value={formData.parentName} onChange={handleChange} required />
+								<input
+									id="parentName"
+									name="parentName"
+									value={formData.parentName}
+									onChange={handleChange}
+									required
+								/>
 							</div>
 						</div>
 
 						<div className="form-row">
 							<div className="form-group">
 								<label htmlFor="email">Email</label>
-								<input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
-								{formData.email && !isValidEmail(formData.email) && <small style={{ color: '#991b1b' }}>Enter a valid email</small>}
+								<input
+									type="email"
+									id="email"
+									name="email"
+									value={formData.email}
+									onChange={handleChange}
+									required
+								/>
+								{formData.email && !isValidEmail(formData.email) && (
+									<small style={{ color: "#991b1b" }}>Enter a valid email</small>
+								)}
 							</div>
+
 							<div className="form-group">
 								<label htmlFor="phone">Phone</label>
-								<input inputMode="numeric" pattern="[0-9 ]*" id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
-								{formData.phone && !isValidPhone(formData.phone) && <small style={{ color: '#991b1b' }}>Enter 10 digits</small>}
+								<input
+									inputMode="numeric"
+									pattern="[0-9 ]*"
+									id="phone"
+									name="phone"
+									value={formData.phone}
+									onChange={handleChange}
+									required
+								/>
+								{formData.phone && !isValidPhone(formData.phone) && (
+									<small style={{ color: "#991b1b" }}>Enter 10 digits</small>
+								)}
 							</div>
 						</div>
 
 						<div className="form-row">
 							<div className="form-group">
 								<label htmlFor="class">Applying for Class</label>
-								<select id="class" name="class" value={formData.class} onChange={handleChange} required>
+								<select
+									id="class"
+									name="class"
+									value={formData.class}
+									onChange={handleChange}
+									required
+								>
 									<option value="">Select</option>
 									<option value="Nursery">Nursery</option>
 									<option value="LKG">LKG</option>
@@ -150,27 +221,47 @@ function Admissions() {
 									<option value="VIII">VIII</option>
 									<option value="IX">IX</option>
 									<option value="X">X</option>
-									<option value="XI">XI</option>
-									<option value="XII">XII</option>
+								
 								</select>
 							</div>
+
 							<div className="form-group">
 								<label htmlFor="previousSchool">Previous School (optional)</label>
-								<input id="previousSchool" name="previousSchool" value={formData.previousSchool} onChange={handleChange} />
+								<input
+									id="previousSchool"
+									name="previousSchool"
+									value={formData.previousSchool}
+									onChange={handleChange}
+								/>
 							</div>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="address">Address</label>
-							<textarea id="address" name="address" rows="4" value={formData.address} onChange={handleChange}></textarea>
+							<textarea
+								id="address"
+								name="address"
+								rows="4"
+								value={formData.address}
+								onChange={handleChange}
+							></textarea>
 						</div>
 
 						{status.message && (
-							<div className={`alert alert-${status.type}`}>{status.message}</div>
+							<div className={`alert alert-${status.type}`}>
+								{status.message}
+							</div>
 						)}
 
-						<button type="submit" className="btn btn-primary" disabled={loading || !formValid}>{loading ? 'Submitting...' : 'Submit Inquiry'}</button>
+						<button
+							type="submit"
+							className="btn btn-primary"
+							disabled={loading || !formValid}
+						>
+							{loading ? "Submitting..." : "Submit Inquiry"}
+						</button>
 					</form>
+
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import API_BASE_URL from '../config/api';
+import emailjs from "@emailjs/browser";
 import './Contact.css';
 
 function Contact() {
@@ -19,9 +19,11 @@ function Contact() {
 		if (digits.length <= 5) return digits;
 		return `${digits.slice(0, 5)} ${digits.slice(5)}`;
 	};
+
 	const normalizePhone = (value) => value.replace(/\D/g, '').slice(0, 10);
 	const isValidPhone = (value) => normalizePhone(value).length === 10;
-	const isValidEmail = (value) => /^(?:[a-zA-Z0-9_'^&\+\-])+(?:\.(?:[a-zA-Z0-9_'^&\+\-])+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(value);
+	const isValidEmail = (value) =>
+		/^(?:[a-zA-Z0-9_'^&+\-])+(?:\.(?:[a-zA-Z0-9_'^&+\-])+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(value);
 
 	const formValid = useMemo(() => {
 		return (
@@ -39,13 +41,10 @@ function Contact() {
 			setFormData({ ...formData, phone: formatPhone(value) });
 			return;
 		}
-		setFormData({
-			...formData,
-			[name]: value
-		});
+		setFormData({ ...formData, [name]: value });
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
 		setStatus({ type: '', message: '' });
@@ -56,34 +55,47 @@ function Contact() {
 			return;
 		}
 
-		try {
-			const response = await fetch(`${API_BASE_URL}/api/contact`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
+		const templateParams = {
+			name: formData.name,
+			email: formData.email,
+			phone: normalizePhone(formData.phone),
+			message: formData.message,
+			inquiryType: formData.inquiryType
+		};
+
+		emailjs
+			.send(
+				"service_ejxlk64",     // Service ID
+				"template_gf3zokb",    // Contact template ID
+				templateParams,
+				"u2jNvokJMsi6k2f7B"    // Public key
+			)
+			.then(
+				() => {
+					setStatus({
+						type: "success",
+						message: "Thank you! Your message has been sent successfully."
+					});
+
+					setFormData({
+						name: "",
+						email: "",
+						phone: "",
+						message: "",
+						inquiryType: "general"
+					});
+
+					setLoading(false);
 				},
-				body: JSON.stringify({ ...formData, phone: normalizePhone(formData.phone) }),
-			});
-
-			const data = await response.json();
-
-			if (response.ok) {
-				setStatus({ type: 'success', message: 'Thank you! Your message has been sent successfully.' });
-				setFormData({
-					name: '',
-					email: '',
-					phone: '',
-					message: '',
-					inquiryType: 'general'
-				});
-			} else {
-				setStatus({ type: 'error', message: data.message || 'Something went wrong. Please try again.' });
-			}
-		} catch (error) {
-			setStatus({ type: 'error', message: 'Failed to send message. Please try again later.' });
-		} finally {
-			setLoading(false);
-		}
+				(error) => {
+					console.error("EmailJS Error:", error);
+					setStatus({
+						type: "error",
+						message: "Failed to send message. Please try again later."
+					});
+					setLoading(false);
+				}
+			);
 	};
 
 	return (
@@ -95,22 +107,22 @@ function Contact() {
 					<div className="contact-info">
 						<h2>Get in Touch</h2>
 						<p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-						
+
 						<div className="info-item">
 							<h3>📍 Address</h3>
 							<p>Siddhartha Group of Schools<br />Vanasthalipuram<br />Hyderabad</p>
 						</div>
-						
+
 						<div className="info-item">
 							<h3>📞 Phone</h3>
 							<p>+91 70000 80000</p>
 						</div>
-						
+
 						<div className="info-item">
 							<h3>📧 Email</h3>
 							<p>info@siddharthaschool.edu</p>
 						</div>
-						
+
 						<div className="info-item">
 							<h3>🕐 Office Hours</h3>
 							<p>Monday - Friday: 8:15 AM - 05:30 PM<br />Saturday: 8:00 AM - 12:00 PM</p>
@@ -119,6 +131,7 @@ function Contact() {
 
 					<div className="contact-form-container">
 						<form onSubmit={handleSubmit} className="contact-form">
+							
 							<div className="form-group">
 								<label htmlFor="inquiryType">Inquiry Type</label>
 								<select
@@ -126,7 +139,6 @@ function Contact() {
 									name="inquiryType"
 									value={formData.inquiryType}
 									onChange={handleChange}
-									required
 								>
 									<option value="general">General Inquiry</option>
 									<option value="admission">Admission</option>
@@ -157,7 +169,9 @@ function Contact() {
 									onChange={handleChange}
 									required
 								/>
-								{formData.email && !isValidEmail(formData.email) && <small style={{ color: '#991b1b' }}>Enter a valid email</small>}
+								{formData.email && !isValidEmail(formData.email) && (
+									<small style={{ color: '#991b1b' }}>Enter a valid email</small>
+								)}
 							</div>
 
 							<div className="form-group">
@@ -171,7 +185,9 @@ function Contact() {
 									onChange={handleChange}
 									required
 								/>
-								{formData.phone && !isValidPhone(formData.phone) && <small style={{ color: '#991b1b' }}>Enter 10 digits</small>}
+								{formData.phone && !isValidPhone(formData.phone) && (
+									<small style={{ color: '#991b1b' }}>Enter 10 digits</small>
+								)}
 							</div>
 
 							<div className="form-group">
