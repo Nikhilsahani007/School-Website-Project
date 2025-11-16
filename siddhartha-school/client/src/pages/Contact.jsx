@@ -60,13 +60,14 @@ function Contact() {
 			email: formData.email,
 			phone: normalizePhone(formData.phone),
 			message: formData.message,
-			inquiryType: formData.inquiryType
+			inquiryType: formData.inquiryType,
+			submitted_at: new Date().toLocaleString()
 		};
 
 		emailjs
 			.send(
 				"service_ejxlk64",     // Service ID
-				"template_gf3zokb",    // Contact template ID
+				"template_pbgbrsv",    // Contact template ID
 				templateParams,
 				"u2jNvokJMsi6k2f7B"    // Public key
 			)

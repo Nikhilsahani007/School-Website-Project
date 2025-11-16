@@ -65,12 +65,13 @@ function Admissions() {
 			class: formData.class,
 			previousSchool: formData.previousSchool || "N/A",
 			address: formData.address || "N/A",
+			submitted_at: new Date().toLocaleString()
 		};
 
 		emailjs
 			.send(
 				"service_ejxlk64",      // Your Service ID
-				"template_pbgbrsv",     // Admission Template ID
+				"template_gf3zokb",     // Admission Template ID
 				templateParams,
 				"u2jNvokJMsi6k2f7B"     // Public Key
 			)
