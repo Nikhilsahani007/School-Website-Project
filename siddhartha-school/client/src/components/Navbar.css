@@ -28,6 +28,19 @@
   background-clip: text;
   transition: all 0.3s ease;
 }
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-logo-img {
+  width: 40px;   /* adjust size */
+  height: 40px;
+  object-fit: contain;
+}
 
 .nav-logo:hover {
   transform: scale(1.05);

@@ -13,8 +13,14 @@ function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-logo">
-          <h2>Siddhartha Group of Schools</h2>
-        </Link>
+  <img 
+    src="/assets/logo.png" 
+    alt="Siddhartha Group of Schools Logo" 
+    className="nav-logo-img"
+  />
+  <h2>Siddhartha Group of Schools</h2>
+</Link>
+
         
         <div className="menu-icon" onClick={toggleMenu}>
           <span className={isOpen ? 'bar open' : 'bar'}></span>

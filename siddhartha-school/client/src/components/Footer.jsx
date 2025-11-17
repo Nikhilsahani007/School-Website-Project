@@ -44,7 +44,7 @@ function Footer() {
             <li>📍 Vanasthalipuram, Hyderabad</li>
             <li>📞 +91 70000 80000</li>
             <li>📧 info@siddharthaschool.edu</li>
-            <li>🕐 Mon-Fri: 08:15 AM - 05:30 PM</li>
+            <li>🕐 Mon-Sat: 08:15 AM - 05:30 PM</li>
           </ul>
         </div>
 
