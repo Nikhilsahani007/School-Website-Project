@@ -391,28 +391,28 @@ app.get('/api/notices', async (req, res) => {
       notices = [
         {
           title: 'Upcoming Annual Examinations',
-          content: 'Annual examinations for all classes will commence from March 15, 2024. Students are advised to complete their syllabus and prepare thoroughly. Detailed timetable will be shared soon.',
+          content: 'Annual examinations for all classes will commence from January 15, 2025. Students are advised to complete their syllabus and prepare thoroughly. Detailed timetable will be shared soon.',
           date: new Date(),
           priority: 'high',
           _id: 'sample1'
         },
         {
           title: 'Assignment Submission Deadline',
-          content: 'All pending assignments for Classes VI to XII must be submitted by February 28, 2024. Late submissions will not be accepted. Please contact your respective class teachers for any queries.',
+          content: 'All pending assignments for Classes VI to X must be submitted by January 28, 2025. Late submissions will not be accepted. Please contact your respective class teachers for any queries.',
           date: new Date(Date.now() - 86400000),
           priority: 'high',
           _id: 'sample2'
         },
         {
           title: 'Holiday Notice - Holi Festival',
-          content: 'School will remain closed on March 8, 2024 (Holi) and March 9, 2024. Classes will resume on March 11, 2024. Wishing all students and staff a happy and safe Holi celebration!',
+          content: 'School will remain closed on March 8, 2025 (Holi) and March 9, 2025. Classes will resume on March 11, 2024. Wishing all students and staff a happy and safe Holi celebration!',
           date: new Date(Date.now() - 172800000),
           priority: 'medium',
           _id: 'sample3'
         },
         {
           title: 'Parent-Teacher Meeting',
-          content: 'Scheduled parent-teacher meetings for all classes will be held on March 5, 2024. Parents are requested to attend and discuss their child\'s academic progress with the teachers.',
+          content: 'Scheduled parent-teacher meetings for all classes will be held on March 5, 2025. Parents are requested to attend and discuss their child\'s academic progress with the teachers.',
           date: new Date(Date.now() - 259200000),
           priority: 'medium',
           _id: 'sample4'
