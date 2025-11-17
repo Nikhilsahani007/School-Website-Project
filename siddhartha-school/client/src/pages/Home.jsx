@@ -231,7 +231,7 @@ function Home() {
 							</div>
 							<div className="management-info">
 								<h3>Vice-Chairperson</h3>
-								<p className="management-name">Mr. K. Naga Laxmi</p>
+								<p className="management-name">Mrs. K. Naga Laxmi</p>
 								<p className="management-desc">
 									Our Vice-Chairperson brings extensive administrative experience and strategic leadership to 
 									the group. She plays a key role in expanding our educational network and ensuring consistent 
