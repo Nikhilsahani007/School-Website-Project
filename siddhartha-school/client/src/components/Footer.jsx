@@ -41,7 +41,7 @@ function Footer() {
         <div className="footer-section">
           <h4>Contact Info</h4>
           <ul className="footer-info">
-            <li>📍 Vanasthalipuram, Hyderabad</li>
+            <li><a href="https://goo.gl/maps/your-school-location" target="_blank" rel="noopener noreferrer" aria-label="School Location">📍 Vanasthalipuram, Hyderabad</a></li>
             <li>📞 +91 70000 80000</li>
             <li>📧 info@siddharthaschool.edu</li>
             <li>🕐 Mon-Sat: 08:15 AM - 05:30 PM</li>
