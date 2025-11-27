@@ -1,39 +1,83 @@
 :root {
-	--primary-color: #6366f1;
-	--primary-dark: #4f46e5;
-	--secondary-color: #8b5cf6;
-	--accent-color: #ec4899;
-	--success-color: #10b981;
-	--warning-color: #f59e0b;
-	--info-color: #3b82f6;
-	--orange: #f97316;
-	--yellow: #eab308;
-	--green: #22c55e;
-	--purple: #a855f7;
-	--pink: #ec4899;
-	--text-dark: #1f2937;
-	--text-light: #6b7280;
-	--bg-gradient-light: linear-gradient(135deg, #e0e7ff 0%, #fce7f3 25%, #fef3c7 50%, #dbeafe 75%, #e0f2fe 100%);
+	/* Brand Colors */
+	--navy: #0f3c86;                 /* Header Blue */
+	--navy-dark: #0a2a61;
+	--gold: #d4a017;                 /* Accent Border Color */
+
+	/* Text Colors */
+	--text-dark: #1a2b49;            /* Deep Blue Text */
+	--text-light: #4b5563;           /* Muted Gray Text */
 	--white: #ffffff;
-	--shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	--shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+	/* Card Colors */
+	--card-bg: #ffffff;
+	--card-border: #f1e6d2;
+
+	/* Background Gradient */
+	--background: linear-gradient(
+		180deg,
+		#fae7cf 0%,
+		#fdf3e4 45%,
+		#fff8ef 100%
+	);
+
+	/* Shadows */
+	--shadow: 0 4px 12px rgba(0,0,0,0.08);
+	--shadow-lg: 0 10px 25px rgba(0,0,0,0.10);
+
+	/* Radius */
+	--radius-lg: 18px;
+	--radius-md: 12px;
+	--radius-sm: 8px;
 }
 
-* { box-sizing: border-box; }
+* {
+	box-sizing: border-box;
+}
 
-html, body, #root { height: 100%; }
+html, body, #root {
+	height: 100%;
+}
 
 body {
 	margin: 0;
 	min-width: 320px;
 	min-height: 100vh;
 	color: var(--text-dark);
-	background: var(--bg-gradient-light);
-	background-attachment: fixed;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: var(--background);
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-a { color: inherit; }
-button { font-family: inherit; }
+/* Links & Buttons */
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	font-family: inherit;
+}
+
+/* Utility: white card style */
+.card {
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow);
+	padding: 1.5rem;
+}
+
+/* Utility: gold bordered image (like screenshot) */
+.gold-frame {
+	border: 4px solid var(--gold);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+}
+
+/* Utility: section spacing */
+.section {
+	padding: 60px 20px;
+}
